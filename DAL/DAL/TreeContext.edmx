@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TreeToolModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TreeToolModelStoreContainer">
+          <EntitySet Name="ActionNeedsTimeType" EntityType="TreeToolModel.Store.ActionNeedsTimeType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActionNeedsType" EntityType="TreeToolModel.Store.ActionNeedsType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DamageClassType" EntityType="TreeToolModel.Store.DamageClassType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DiseasesType" EntityType="TreeToolModel.Store.DiseasesType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Estate" EntityType="TreeToolModel.Store.Estate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FungusType" EntityType="TreeToolModel.Store.FungusType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Inventory" EntityType="TreeToolModel.Store.Inventory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SafetyType" EntityType="TreeToolModel.Store.SafetyType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TreeObservation" EntityType="TreeToolModel.Store.TreeObservation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TreesInventory" EntityType="TreeToolModel.Store.TreesInventory" store:Type="Tables" store:Schema="dbo" store:Name="TreesInventory">
+            <DefiningQuery>SELECT 
+      [TreesInventory].[InventoryID] AS [InventoryID], 
+      [TreesInventory].[TreeObservationID] AS [TreeObservationID]
+      FROM [dbo].[TreesInventory] AS [TreesInventory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TreeSpecies" EntityType="TreeToolModel.Store.TreeSpecies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VitalityType" EntityType="TreeToolModel.Store.VitalityType" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Inventory_Estate" Association="TreeToolModel.Store.FK_Inventory_Estate">
+            <End Role="Estate" EntitySet="Estate" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_ActionNeedsTimeType" Association="TreeToolModel.Store.FK_TreeObservation_ActionNeedsTimeType">
+            <End Role="ActionNeedsTimeType" EntitySet="ActionNeedsTimeType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_ActionNeedsType" Association="TreeToolModel.Store.FK_TreeObservation_ActionNeedsType">
+            <End Role="ActionNeedsType" EntitySet="ActionNeedsType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_DamageClassType" Association="TreeToolModel.Store.FK_TreeObservation_DamageClassType">
+            <End Role="DamageClassType" EntitySet="DamageClassType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_DiseasesType" Association="TreeToolModel.Store.FK_TreeObservation_DiseasesType">
+            <End Role="DiseasesType" EntitySet="DiseasesType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_FungusType" Association="TreeToolModel.Store.FK_TreeObservation_FungusType">
+            <End Role="FungusType" EntitySet="FungusType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_SafetyType" Association="TreeToolModel.Store.FK_TreeObservation_SafetyType">
+            <End Role="SafetyType" EntitySet="SafetyType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_TreeSpecies" Association="TreeToolModel.Store.FK_TreeObservation_TreeSpecies">
+            <End Role="TreeSpecies" EntitySet="TreeSpecies" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_VitalityType" Association="TreeToolModel.Store.FK_TreeObservation_VitalityType">
+            <End Role="VitalityType" EntitySet="VitalityType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreesInventory_Inventory" Association="TreeToolModel.Store.FK_TreesInventory_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="TreesInventory" EntitySet="TreesInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreesInventory_TreeObservation" Association="TreeToolModel.Store.FK_TreesInventory_TreeObservation">
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+            <End Role="TreesInventory" EntitySet="TreesInventory" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActionNeedsTimeType">
+          <Key>
+            <PropertyRef Name="ActionNeedsTimeID" />
+          </Key>
+          <Property Name="ActionNeedsTimeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActionNeedsType">
+          <Key>
+            <PropertyRef Name="ActionNeedsID" />
+          </Key>
+          <Property Name="ActionNeedsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DamageClassType">
+          <Key>
+            <PropertyRef Name="DamageClassID" />
+          </Key>
+          <Property Name="DamageClassID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiseasesType">
+          <Key>
+            <PropertyRef Name="DiseasesID" />
+          </Key>
+          <Property Name="DiseasesID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estate">
+          <Key>
+            <PropertyRef Name="EstateID" />
+          </Key>
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="int" Nullable="false" />
+          <Property Name="CoordiY" Type="float" Nullable="false" />
+          <Property Name="CoordiX" Type="float" Nullable="false" />
+          <Property Name="EstateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="FungusType">
+          <Key>
+            <PropertyRef Name="FungusID" />
+          </Key>
+          <Property Name="FungusID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="InventoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EstateID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SafetyType">
+          <Key>
+            <PropertyRef Name="SafetyID" />
+          </Key>
+          <Property Name="SafetyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TreeObservation">
+          <Key>
+            <PropertyRef Name="TreeObservationID" />
+          </Key>
+          <Property Name="TreeObservationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Perimeter" Type="float" />
+          <Property Name="Height" Type="float" />
+          <Property Name="TreeObservationComment" Type="varchar(max)" />
+          <Property Name="VitalityComment" Type="varchar(max)" />
+          <Property Name="DamageClassComment" Type="varchar(max)" />
+          <Property Name="FungusComment" Type="varchar(max)" />
+          <Property Name="DiseasesComment" Type="varchar(max)" />
+          <Property Name="SafetyComment" Type="varchar(max)" />
+          <Property Name="ActionNeedsComment" Type="varchar(max)" />
+          <Property Name="ActionNeedsTimeComment" Type="varchar(max)" />
+          <Property Name="CoordX" Type="float" />
+          <Property Name="CoordY" Type="float" />
+          <Property Name="VitalityID" Type="int" />
+          <Property Name="DiseasesID" Type="int" />
+          <Property Name="DamageClassID" Type="int" />
+          <Property Name="SafetyID" Type="int" />
+          <Property Name="ActionNeedsTimeID" Type="int" />
+          <Property Name="ActionNeedsID" Type="int" />
+          <Property Name="FungusID" Type="int" />
+          <Property Name="TreeSpeciesID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'TreeTool.dbo.TreesInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="TreesInventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+            <PropertyRef Name="TreeObservationID" />
+          </Key>
+          <Property Name="InventoryID" Type="int" Nullable="false" />
+          <Property Name="TreeObservationID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TreeSpecies">
+          <Key>
+            <PropertyRef Name="TreeSpeciesID" />
+          </Key>
+          <Property Name="TreeSpeciesID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Genus" Type="varchar" MaxLength="50" />
+          <Property Name="Species" Type="varchar" MaxLength="50" />
+          <Property Name="Sort" Type="varchar" MaxLength="50" />
+          <Property Name="ePlant" Type="varchar" MaxLength="50" />
+          <Property Name="SwedishName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VitalityType">
+          <Key>
+            <PropertyRef Name="VitalityID" />
+          </Key>
+          <Property Name="VitalityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Inventory_Estate">
+          <End Role="Estate" Type="TreeToolModel.Store.Estate" Multiplicity="1" />
+          <End Role="Inventory" Type="TreeToolModel.Store.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estate">
+              <PropertyRef Name="EstateID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="EstateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_ActionNeedsTimeType">
+          <End Role="ActionNeedsTimeType" Type="TreeToolModel.Store.ActionNeedsTimeType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionNeedsTimeType">
+              <PropertyRef Name="ActionNeedsTimeID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="ActionNeedsTimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_ActionNeedsType">
+          <End Role="ActionNeedsType" Type="TreeToolModel.Store.ActionNeedsType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionNeedsType">
+              <PropertyRef Name="ActionNeedsID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="ActionNeedsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_DamageClassType">
+          <End Role="DamageClassType" Type="TreeToolModel.Store.DamageClassType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DamageClassType">
+              <PropertyRef Name="DamageClassID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="DamageClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_DiseasesType">
+          <End Role="DiseasesType" Type="TreeToolModel.Store.DiseasesType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiseasesType">
+              <PropertyRef Name="DiseasesID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="DiseasesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_FungusType">
+          <End Role="FungusType" Type="TreeToolModel.Store.FungusType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FungusType">
+              <PropertyRef Name="FungusID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="FungusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_SafetyType">
+          <End Role="SafetyType" Type="TreeToolModel.Store.SafetyType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SafetyType">
+              <PropertyRef Name="SafetyID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="SafetyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_TreeSpecies">
+          <End Role="TreeSpecies" Type="TreeToolModel.Store.TreeSpecies" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeSpecies">
+              <PropertyRef Name="TreeSpeciesID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="TreeSpeciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_VitalityType">
+          <End Role="VitalityType" Type="TreeToolModel.Store.VitalityType" Multiplicity="0..1" />
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VitalityType">
+              <PropertyRef Name="VitalityID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="VitalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreesInventory_Inventory">
+          <End Role="Inventory" Type="TreeToolModel.Store.Inventory" Multiplicity="1" />
+          <End Role="TreesInventory" Type="TreeToolModel.Store.TreesInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="InventoryID" />
+            </Principal>
+            <Dependent Role="TreesInventory">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreesInventory_TreeObservation">
+          <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="1" />
+          <End Role="TreesInventory" Type="TreeToolModel.Store.TreesInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeObservation">
+              <PropertyRef Name="TreeObservationID" />
+            </Principal>
+            <Dependent Role="TreesInventory">
+              <PropertyRef Name="TreeObservationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TreeToolModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TreeToolEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ActionNeedsTimeType" EntityType="TreeToolModel.ActionNeedsTimeType" />
+          <EntitySet Name="ActionNeedsType" EntityType="TreeToolModel.ActionNeedsType" />
+          <EntitySet Name="DamageClassType" EntityType="TreeToolModel.DamageClassType" />
+          <EntitySet Name="DiseasesType" EntityType="TreeToolModel.DiseasesType" />
+          <EntitySet Name="Estate" EntityType="TreeToolModel.Estate" />
+          <EntitySet Name="FungusType" EntityType="TreeToolModel.FungusType" />
+          <EntitySet Name="Inventory" EntityType="TreeToolModel.Inventory" />
+          <EntitySet Name="SafetyType" EntityType="TreeToolModel.SafetyType" />
+          <EntitySet Name="TreeObservation" EntityType="TreeToolModel.TreeObservation" />
+          <EntitySet Name="TreeSpecies" EntityType="TreeToolModel.TreeSpecies" />
+          <EntitySet Name="VitalityType" EntityType="TreeToolModel.VitalityType" />
+          <AssociationSet Name="FK_TreeObservation_ActionNeedsTimeType" Association="TreeToolModel.FK_TreeObservation_ActionNeedsTimeType">
+            <End Role="ActionNeedsTimeType" EntitySet="ActionNeedsTimeType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_ActionNeedsType" Association="TreeToolModel.FK_TreeObservation_ActionNeedsType">
+            <End Role="ActionNeedsType" EntitySet="ActionNeedsType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_DamageClassType" Association="TreeToolModel.FK_TreeObservation_DamageClassType">
+            <End Role="DamageClassType" EntitySet="DamageClassType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_DiseasesType" Association="TreeToolModel.FK_TreeObservation_DiseasesType">
+            <End Role="DiseasesType" EntitySet="DiseasesType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Estate" Association="TreeToolModel.FK_Inventory_Estate">
+            <End Role="Estate" EntitySet="Estate" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_FungusType" Association="TreeToolModel.FK_TreeObservation_FungusType">
+            <End Role="FungusType" EntitySet="FungusType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_SafetyType" Association="TreeToolModel.FK_TreeObservation_SafetyType">
+            <End Role="SafetyType" EntitySet="SafetyType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_TreeSpecies" Association="TreeToolModel.FK_TreeObservation_TreeSpecies">
+            <End Role="TreeSpecies" EntitySet="TreeSpecies" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_VitalityType" Association="TreeToolModel.FK_TreeObservation_VitalityType">
+            <End Role="VitalityType" EntitySet="VitalityType" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+          <AssociationSet Name="TreesInventory" Association="TreeToolModel.TreesInventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="TreeObservation" EntitySet="TreeObservation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActionNeedsTimeType">
+          <Key>
+            <PropertyRef Name="ActionNeedsTimeID" />
+          </Key>
+          <Property Type="Int32" Name="ActionNeedsTimeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsTimeType" FromRole="ActionNeedsTimeType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="ActionNeedsType">
+          <Key>
+            <PropertyRef Name="ActionNeedsID" />
+          </Key>
+          <Property Type="Int32" Name="ActionNeedsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsType" FromRole="ActionNeedsType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="DamageClassType">
+          <Key>
+            <PropertyRef Name="DamageClassID" />
+          </Key>
+          <Property Type="Int32" Name="DamageClassID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_DamageClassType" FromRole="DamageClassType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="DiseasesType">
+          <Key>
+            <PropertyRef Name="DiseasesID" />
+          </Key>
+          <Property Type="Int32" Name="DiseasesID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_DiseasesType" FromRole="DiseasesType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="Estate">
+          <Key>
+            <PropertyRef Name="EstateID" />
+          </Key>
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Name" Nullable="false" />
+          <Property Type="Double" Name="CoordiY" Nullable="false" />
+          <Property Type="Double" Name="CoordiX" Nullable="false" />
+          <Property Type="Int32" Name="EstateID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Inventory" Relationship="TreeToolModel.FK_Inventory_Estate" FromRole="Estate" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="FungusType">
+          <Key>
+            <PropertyRef Name="FungusID" />
+          </Key>
+          <Property Type="Int32" Name="FungusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_FungusType" FromRole="FungusType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Type="Int32" Name="InventoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EstateID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Estate" Relationship="TreeToolModel.FK_Inventory_Estate" FromRole="Inventory" ToRole="Estate" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.TreesInventory" FromRole="Inventory" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="SafetyType">
+          <Key>
+            <PropertyRef Name="SafetyID" />
+          </Key>
+          <Property Type="Int32" Name="SafetyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_SafetyType" FromRole="SafetyType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="TreeObservation">
+          <Key>
+            <PropertyRef Name="TreeObservationID" />
+          </Key>
+          <Property Type="Int32" Name="TreeObservationID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="Perimeter" />
+          <Property Type="Double" Name="Height" />
+          <Property Type="String" Name="TreeObservationComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VitalityComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DamageClassComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FungusComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DiseasesComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SafetyComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ActionNeedsComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ActionNeedsTimeComment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="CoordX" />
+          <Property Type="Double" Name="CoordY" />
+          <Property Type="Int32" Name="VitalityID" />
+          <Property Type="Int32" Name="DiseasesID" />
+          <Property Type="Int32" Name="DamageClassID" />
+          <Property Type="Int32" Name="SafetyID" />
+          <Property Type="Int32" Name="ActionNeedsTimeID" />
+          <Property Type="Int32" Name="ActionNeedsID" />
+          <Property Type="Int32" Name="FungusID" />
+          <Property Type="Int32" Name="TreeSpeciesID" />
+          <NavigationProperty Name="ActionNeedsTimeType" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsTimeType" FromRole="TreeObservation" ToRole="ActionNeedsTimeType" />
+          <NavigationProperty Name="ActionNeedsType" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsType" FromRole="TreeObservation" ToRole="ActionNeedsType" />
+          <NavigationProperty Name="DamageClassType" Relationship="TreeToolModel.FK_TreeObservation_DamageClassType" FromRole="TreeObservation" ToRole="DamageClassType" />
+          <NavigationProperty Name="DiseasesType" Relationship="TreeToolModel.FK_TreeObservation_DiseasesType" FromRole="TreeObservation" ToRole="DiseasesType" />
+          <NavigationProperty Name="FungusType" Relationship="TreeToolModel.FK_TreeObservation_FungusType" FromRole="TreeObservation" ToRole="FungusType" />
+          <NavigationProperty Name="SafetyType" Relationship="TreeToolModel.FK_TreeObservation_SafetyType" FromRole="TreeObservation" ToRole="SafetyType" />
+          <NavigationProperty Name="TreeSpecies" Relationship="TreeToolModel.FK_TreeObservation_TreeSpecies" FromRole="TreeObservation" ToRole="TreeSpecies" />
+          <NavigationProperty Name="VitalityType" Relationship="TreeToolModel.FK_TreeObservation_VitalityType" FromRole="TreeObservation" ToRole="VitalityType" />
+          <NavigationProperty Name="Inventory" Relationship="TreeToolModel.TreesInventory" FromRole="TreeObservation" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="TreeSpecies">
+          <Key>
+            <PropertyRef Name="TreeSpeciesID" />
+          </Key>
+          <Property Type="Int32" Name="TreeSpeciesID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Genus" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Species" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Sort" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ePlant" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SwedishName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_TreeSpecies" FromRole="TreeSpecies" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="VitalityType">
+          <Key>
+            <PropertyRef Name="VitalityID" />
+          </Key>
+          <Property Type="Int32" Name="VitalityID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_VitalityType" FromRole="VitalityType" ToRole="TreeObservation" />
+        </EntityType>
+        <Association Name="FK_TreeObservation_ActionNeedsTimeType">
+          <End Type="TreeToolModel.ActionNeedsTimeType" Role="ActionNeedsTimeType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionNeedsTimeType">
+              <PropertyRef Name="ActionNeedsTimeID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="ActionNeedsTimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_ActionNeedsType">
+          <End Type="TreeToolModel.ActionNeedsType" Role="ActionNeedsType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionNeedsType">
+              <PropertyRef Name="ActionNeedsID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="ActionNeedsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_DamageClassType">
+          <End Type="TreeToolModel.DamageClassType" Role="DamageClassType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DamageClassType">
+              <PropertyRef Name="DamageClassID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="DamageClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_DiseasesType">
+          <End Type="TreeToolModel.DiseasesType" Role="DiseasesType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiseasesType">
+              <PropertyRef Name="DiseasesID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="DiseasesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Estate">
+          <End Type="TreeToolModel.Estate" Role="Estate" Multiplicity="1" />
+          <End Type="TreeToolModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estate">
+              <PropertyRef Name="EstateID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="EstateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_FungusType">
+          <End Type="TreeToolModel.FungusType" Role="FungusType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FungusType">
+              <PropertyRef Name="FungusID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="FungusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_SafetyType">
+          <End Type="TreeToolModel.SafetyType" Role="SafetyType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SafetyType">
+              <PropertyRef Name="SafetyID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="SafetyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_TreeSpecies">
+          <End Type="TreeToolModel.TreeSpecies" Role="TreeSpecies" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeSpecies">
+              <PropertyRef Name="TreeSpeciesID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="TreeSpeciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_VitalityType">
+          <End Type="TreeToolModel.VitalityType" Role="VitalityType" Multiplicity="0..1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VitalityType">
+              <PropertyRef Name="VitalityID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="VitalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TreesInventory">
+          <End Type="TreeToolModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TreeToolModelStoreContainer" CdmEntityContainer="TreeToolEntities">
+          <EntitySetMapping Name="ActionNeedsTimeType">
+            <EntityTypeMapping TypeName="TreeToolModel.ActionNeedsTimeType">
+              <MappingFragment StoreEntitySet="ActionNeedsTimeType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ActionNeedsTimeID" ColumnName="ActionNeedsTimeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionNeedsType">
+            <EntityTypeMapping TypeName="TreeToolModel.ActionNeedsType">
+              <MappingFragment StoreEntitySet="ActionNeedsType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ActionNeedsID" ColumnName="ActionNeedsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamageClassType">
+            <EntityTypeMapping TypeName="TreeToolModel.DamageClassType">
+              <MappingFragment StoreEntitySet="DamageClassType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DamageClassID" ColumnName="DamageClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiseasesType">
+            <EntityTypeMapping TypeName="TreeToolModel.DiseasesType">
+              <MappingFragment StoreEntitySet="DiseasesType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DiseasesID" ColumnName="DiseasesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estate">
+            <EntityTypeMapping TypeName="TreeToolModel.Estate">
+              <MappingFragment StoreEntitySet="Estate">
+                <ScalarProperty Name="EstateID" ColumnName="EstateID" />
+                <ScalarProperty Name="CoordiX" ColumnName="CoordiX" />
+                <ScalarProperty Name="CoordiY" ColumnName="CoordiY" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FungusType">
+            <EntityTypeMapping TypeName="TreeToolModel.FungusType">
+              <MappingFragment StoreEntitySet="FungusType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="FungusID" ColumnName="FungusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory">
+            <EntityTypeMapping TypeName="TreeToolModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EstateID" ColumnName="EstateID" />
+                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SafetyType">
+            <EntityTypeMapping TypeName="TreeToolModel.SafetyType">
+              <MappingFragment StoreEntitySet="SafetyType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SafetyID" ColumnName="SafetyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreeObservation">
+            <EntityTypeMapping TypeName="TreeToolModel.TreeObservation">
+              <MappingFragment StoreEntitySet="TreeObservation">
+                <ScalarProperty Name="TreeSpeciesID" ColumnName="TreeSpeciesID" />
+                <ScalarProperty Name="FungusID" ColumnName="FungusID" />
+                <ScalarProperty Name="ActionNeedsID" ColumnName="ActionNeedsID" />
+                <ScalarProperty Name="ActionNeedsTimeID" ColumnName="ActionNeedsTimeID" />
+                <ScalarProperty Name="SafetyID" ColumnName="SafetyID" />
+                <ScalarProperty Name="DamageClassID" ColumnName="DamageClassID" />
+                <ScalarProperty Name="DiseasesID" ColumnName="DiseasesID" />
+                <ScalarProperty Name="VitalityID" ColumnName="VitalityID" />
+                <ScalarProperty Name="CoordY" ColumnName="CoordY" />
+                <ScalarProperty Name="CoordX" ColumnName="CoordX" />
+                <ScalarProperty Name="ActionNeedsTimeComment" ColumnName="ActionNeedsTimeComment" />
+                <ScalarProperty Name="ActionNeedsComment" ColumnName="ActionNeedsComment" />
+                <ScalarProperty Name="SafetyComment" ColumnName="SafetyComment" />
+                <ScalarProperty Name="DiseasesComment" ColumnName="DiseasesComment" />
+                <ScalarProperty Name="FungusComment" ColumnName="FungusComment" />
+                <ScalarProperty Name="DamageClassComment" ColumnName="DamageClassComment" />
+                <ScalarProperty Name="VitalityComment" ColumnName="VitalityComment" />
+                <ScalarProperty Name="TreeObservationComment" ColumnName="TreeObservationComment" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Perimeter" ColumnName="Perimeter" />
+                <ScalarProperty Name="TreeObservationID" ColumnName="TreeObservationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreeSpecies">
+            <EntityTypeMapping TypeName="TreeToolModel.TreeSpecies">
+              <MappingFragment StoreEntitySet="TreeSpecies">
+                <ScalarProperty Name="SwedishName" ColumnName="SwedishName" />
+                <ScalarProperty Name="ePlant" ColumnName="ePlant" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Species" ColumnName="Species" />
+                <ScalarProperty Name="Genus" ColumnName="Genus" />
+                <ScalarProperty Name="TreeSpeciesID" ColumnName="TreeSpeciesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VitalityType">
+            <EntityTypeMapping TypeName="TreeToolModel.VitalityType">
+              <MappingFragment StoreEntitySet="VitalityType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="VitalityID" ColumnName="VitalityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TreesInventory" TypeName="TreeToolModel.TreesInventory" StoreEntitySet="TreesInventory">
+            <EndProperty Name="TreeObservation">
+              <ScalarProperty Name="TreeObservationID" ColumnName="TreeObservationID" />
+            </EndProperty>
+            <EndProperty Name="Inventory">
+              <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
