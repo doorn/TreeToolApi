@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Api.Services;
 using Models;
+using System.Net;
 
 namespace Api.Controllers
 {
@@ -19,15 +20,17 @@ namespace Api.Controllers
         }
 
         // GET api/values/5
-        public string Get(int name)
+        public InventoryModel Get(int id)
         {
-            throw new NotImplementedException();
+            InventoryService service = new InventoryService();
+            return service.GetInventoryByEstateName(id);
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public HttpStatusCode Post([FromBody]InventoryModel inventory)
         {
-            throw new NotImplementedException();
+            InventoryService service = new InventoryService();
+            return service.SaveInventory(inventory);
         }
 
         // PUT api/values/5

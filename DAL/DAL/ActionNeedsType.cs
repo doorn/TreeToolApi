@@ -20,7 +20,7 @@ namespace DAL
         }
     
         public int ActionNeedsID { get; set; }
-        public int Value { get; set; }
+        public string Value { get; set; }
     
         public virtual ICollection<TreeObservation> TreeObservation { get; set; }
     }

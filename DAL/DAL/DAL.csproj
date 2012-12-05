@@ -69,8 +69,14 @@
     <Compile Include="Inventory.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Performer.cs">
+      <DependentUpon>TreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SafetyType.cs">
+      <DependentUpon>TreeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TreeContext.Context.cs">

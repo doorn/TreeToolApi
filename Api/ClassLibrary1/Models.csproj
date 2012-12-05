@@ -40,10 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionNeedsTypeModel.cs" />
     <Compile Include="EstateModel.cs" />
+    <Compile Include="InventoryModel.cs" />
+    <Compile Include="ObservationTypeCollection.cs" />
     <Compile Include="ProtocolModel.cs" />
     <Compile Include="ObservationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeObservationModel.cs" />
     <Compile Include="TreeSpeciesModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

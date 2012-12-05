@@ -22,8 +22,10 @@ namespace DAL
         public int InventoryID { get; set; }
         public int EstateID { get; set; }
         public System.DateTime Date { get; set; }
+        public int PerformerID { get; set; }
     
         public virtual Estate Estate { get; set; }
+        public virtual Performer Performer { get; set; }
         public virtual ICollection<TreeObservation> TreeObservation { get; set; }
     }
 }

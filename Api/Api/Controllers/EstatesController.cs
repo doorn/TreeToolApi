@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Api.Services;
 using Models;
+using System.Net;
 
 
 namespace Api.Controllers
@@ -21,24 +22,27 @@ namespace Api.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public HttpStatusCode Get(int id)
         {
-            return "value";
+            return HttpStatusCode.NotImplemented;
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public HttpStatusCode Post([FromBody]string value)
         {
+            return HttpStatusCode.NotImplemented;
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public HttpStatusCode Put(int id, [FromBody]string value)
         {
+            return HttpStatusCode.NotImplemented;
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public HttpStatusCode Delete(int id)
         {
+            return HttpStatusCode.NotImplemented;
         }
 
     }

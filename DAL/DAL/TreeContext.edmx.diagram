@@ -4,26 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c6aa6489beae4f399e364e1b12f3e980" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="TreeToolModel.ActionNeedsTimeType" Width="1.5" PointX="10.86493512190177" PointY="20.091016838369434" />
-        <EntityTypeShape EntityType="TreeToolModel.ActionNeedsType" Width="1.5" PointX="0.31480078600104933" PointY="18.901699238876674" />
-        <EntityTypeShape EntityType="TreeToolModel.DamageClassType" Width="1.5" PointX="11.979306109239955" PointY="17.893321850287411" />
-        <EntityTypeShape EntityType="TreeToolModel.DiseasesType" Width="1.5" PointX="11.978669023131332" PointY="28.36261001059907" />
-        <EntityTypeShape EntityType="TreeToolModel.Estate" Width="1.5" PointX="6.1084034862501566" PointY="19.588042655767893" />
-        <EntityTypeShape EntityType="TreeToolModel.FungusType" Width="1.5" PointX="1.1560531077701846" PointY="17.385384418715436" />
-        <EntityTypeShape EntityType="TreeToolModel.Inventory" Width="1.5" PointX="0.49983571865588228" PointY="19.888213822566073" />
-        <EntityTypeShape EntityType="TreeToolModel.SafetyType" Width="1.5" PointX="10.789622788685197" PointY="6.95084573652169" />
-        <EntityTypeShape EntityType="TreeToolModel.TreeObservation" Width="1.5" PointX="11.371688162615378" PointY="8.3476456591615662" />
-        <EntityTypeShape EntityType="TreeToolModel.TreeSpecies" Width="1.5" PointX="4.1444134843276874" PointY="8.4292831311138734" />
-        <EntityTypeShape EntityType="TreeToolModel.VitalityType" Width="1.5" PointX="6.5053188663466459" PointY="4.7421511433749233" />
+      <Diagram DiagramId="fd4b642e90be407a9ce363643af26466" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="TreeToolModel.ActionNeedsTimeType" Width="1.5" PointX="22.375" PointY="3.625" />
+        <EntityTypeShape EntityType="TreeToolModel.ActionNeedsType" Width="1.5" PointX="6.625" PointY="7.875" />
+        <EntityTypeShape EntityType="TreeToolModel.DamageClassType" Width="1.5" PointX="2.1383783640984344" PointY="1.6959998317509888" />
+        <EntityTypeShape EntityType="TreeToolModel.DiseasesType" Width="1.5" PointX="22.375" PointY="1.5" />
+        <EntityTypeShape EntityType="TreeToolModel.Estate" Width="1.5" PointX="3.25" PointY="17.5" />
+        <EntityTypeShape EntityType="TreeToolModel.FungusType" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TreeToolModel.Inventory" Width="1.5" PointX="9.625" PointY="12.25" />
+        <EntityTypeShape EntityType="TreeToolModel.Performer" Width="1.5" PointX="27.125" PointY="9" />
+        <EntityTypeShape EntityType="TreeToolModel.SafetyType" Width="1.5" PointX="22.375" PointY="8.25" />
+        <EntityTypeShape EntityType="TreeToolModel.sysdiagrams" Width="1.5" PointX="22.5" PointY="17.125" />
+        <EntityTypeShape EntityType="TreeToolModel.Tree" Width="1.5" PointX="20.75" PointY="11.25" />
+        <EntityTypeShape EntityType="TreeToolModel.TreeObservation" Width="1.5" PointX="13.875" PointY="3.125" />
+        <EntityTypeShape EntityType="TreeToolModel.TreeSpecies" Width="1.5" PointX="16.375" PointY="17" />
+        <EntityTypeShape EntityType="TreeToolModel.VitalityType" Width="1.5" PointX="22.375" PointY="6" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_ActionNeedsTimeType" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_ActionNeedsType" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_DamageClassType" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_DiseasesType" />
         <AssociationConnector Association="TreeToolModel.FK_Inventory_Estate" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_FungusType" />
+        <AssociationConnector Association="TreeToolModel.FK_Inventory_Performer" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_SafetyType" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_TreeSpecies" />
+        <AssociationConnector Association="TreeToolModel.FK_Tree_TreeSpecies" />
+        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_Tree" />
         <AssociationConnector Association="TreeToolModel.FK_TreeObservation_VitalityType" />
         <AssociationConnector Association="TreeToolModel.TreesInventory" />
       </Diagram>

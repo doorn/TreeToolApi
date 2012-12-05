@@ -16,8 +16,7 @@ namespace Api.Controllers
         // GET api/values
         public IEnumerable<EstateModel> Get()
         {
-            EstateService service = new EstateService();
-            return service.GetEstates();
+            throw new NotImplementedException();
         }
 
         // GET api/values/5

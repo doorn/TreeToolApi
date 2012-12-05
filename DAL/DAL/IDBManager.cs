@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +12,7 @@ namespace DAL
     {
         IEnumerable<EstateModel> GetEstates();
         ProtocolModel GetProtocol();
-        void GetInventoryByEstateNameID(int name);
-        
-        void SaveInventory(string ngtvarde);
+        InventoryModel GetInventoryByEstateName(int name);
+        HttpStatusCode SaveInventory(InventoryModel inventory);
     }
 }

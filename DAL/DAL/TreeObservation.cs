@@ -39,7 +39,7 @@ namespace DAL
         public Nullable<int> ActionNeedsTimeID { get; set; }
         public Nullable<int> ActionNeedsID { get; set; }
         public Nullable<int> FungusID { get; set; }
-        public Nullable<int> TreeSpeciesID { get; set; }
+        public int TreeID { get; set; }
     
         public virtual ActionNeedsTimeType ActionNeedsTimeType { get; set; }
         public virtual ActionNeedsType ActionNeedsType { get; set; }
@@ -47,7 +47,7 @@ namespace DAL
         public virtual DiseasesType DiseasesType { get; set; }
         public virtual FungusType FungusType { get; set; }
         public virtual SafetyType SafetyType { get; set; }
-        public virtual TreeSpecies TreeSpecies { get; set; }
+        public virtual Tree Tree { get; set; }
         public virtual VitalityType VitalityType { get; set; }
         public virtual ICollection<Inventory> Inventory { get; set; }
     }

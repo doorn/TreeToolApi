@@ -13,7 +13,10 @@
           <EntitySet Name="Estate" EntityType="TreeToolModel.Store.Estate" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FungusType" EntityType="TreeToolModel.Store.FungusType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Inventory" EntityType="TreeToolModel.Store.Inventory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Performer" EntityType="TreeToolModel.Store.Performer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SafetyType" EntityType="TreeToolModel.Store.SafetyType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="TreeToolModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tree" EntityType="TreeToolModel.Store.Tree" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TreeObservation" EntityType="TreeToolModel.Store.TreeObservation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TreesInventory" EntityType="TreeToolModel.Store.TreesInventory" store:Type="Tables" store:Schema="dbo" store:Name="TreesInventory">
             <DefiningQuery>SELECT 
@@ -26,6 +29,14 @@
           <AssociationSet Name="FK_Inventory_Estate" Association="TreeToolModel.Store.FK_Inventory_Estate">
             <End Role="Estate" EntitySet="Estate" />
             <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Performer" Association="TreeToolModel.Store.FK_Inventory_Performer">
+            <End Role="Performer" EntitySet="Performer" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tree_TreeSpecies" Association="TreeToolModel.Store.FK_Tree_TreeSpecies">
+            <End Role="TreeSpecies" EntitySet="TreeSpecies" />
+            <End Role="Tree" EntitySet="Tree" />
           </AssociationSet>
           <AssociationSet Name="FK_TreeObservation_ActionNeedsTimeType" Association="TreeToolModel.Store.FK_TreeObservation_ActionNeedsTimeType">
             <End Role="ActionNeedsTimeType" EntitySet="ActionNeedsTimeType" />
@@ -51,8 +62,8 @@
             <End Role="SafetyType" EntitySet="SafetyType" />
             <End Role="TreeObservation" EntitySet="TreeObservation" />
           </AssociationSet>
-          <AssociationSet Name="FK_TreeObservation_TreeSpecies" Association="TreeToolModel.Store.FK_TreeObservation_TreeSpecies">
-            <End Role="TreeSpecies" EntitySet="TreeSpecies" />
+          <AssociationSet Name="FK_TreeObservation_Tree" Association="TreeToolModel.Store.FK_TreeObservation_Tree">
+            <End Role="Tree" EntitySet="Tree" />
             <End Role="TreeObservation" EntitySet="TreeObservation" />
           </AssociationSet>
           <AssociationSet Name="FK_TreeObservation_VitalityType" Association="TreeToolModel.Store.FK_TreeObservation_VitalityType">
@@ -80,7 +91,7 @@
             <PropertyRef Name="ActionNeedsID" />
           </Key>
           <Property Name="ActionNeedsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="DamageClassType">
           <Key>
@@ -120,6 +131,14 @@
           <Property Name="InventoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EstateID" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="PerformerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Performer">
+          <Key>
+            <PropertyRef Name="PerformerID" />
+          </Key>
+          <Property Name="PerformerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="SafetyType">
           <Key>
@@ -127,6 +146,23 @@
           </Key>
           <Property Name="SafetyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tree">
+          <Key>
+            <PropertyRef Name="TreeID" />
+          </Key>
+          <Property Name="TreeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TreeSpeciesID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TreeObservation">
           <Key>
@@ -152,7 +188,7 @@
           <Property Name="ActionNeedsTimeID" Type="int" />
           <Property Name="ActionNeedsID" Type="int" />
           <Property Name="FungusID" Type="int" />
-          <Property Name="TreeSpeciesID" Type="int" />
+          <Property Name="TreeID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'TreeTool.dbo.TreesInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -192,6 +228,30 @@
             </Principal>
             <Dependent Role="Inventory">
               <PropertyRef Name="EstateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Performer">
+          <End Role="Performer" Type="TreeToolModel.Store.Performer" Multiplicity="1" />
+          <End Role="Inventory" Type="TreeToolModel.Store.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Performer">
+              <PropertyRef Name="PerformerID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="PerformerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tree_TreeSpecies">
+          <End Role="TreeSpecies" Type="TreeToolModel.Store.TreeSpecies" Multiplicity="1" />
+          <End Role="Tree" Type="TreeToolModel.Store.Tree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeSpecies">
+              <PropertyRef Name="TreeSpeciesID" />
+            </Principal>
+            <Dependent Role="Tree">
+              <PropertyRef Name="TreeSpeciesID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -267,15 +327,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TreeObservation_TreeSpecies">
-          <End Role="TreeSpecies" Type="TreeToolModel.Store.TreeSpecies" Multiplicity="0..1" />
+        <Association Name="FK_TreeObservation_Tree">
+          <End Role="Tree" Type="TreeToolModel.Store.Tree" Multiplicity="1" />
           <End Role="TreeObservation" Type="TreeToolModel.Store.TreeObservation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TreeSpecies">
-              <PropertyRef Name="TreeSpeciesID" />
+            <Principal Role="Tree">
+              <PropertyRef Name="TreeID" />
             </Principal>
             <Dependent Role="TreeObservation">
-              <PropertyRef Name="TreeSpeciesID" />
+              <PropertyRef Name="TreeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -327,7 +387,10 @@
           <EntitySet Name="Estate" EntityType="TreeToolModel.Estate" />
           <EntitySet Name="FungusType" EntityType="TreeToolModel.FungusType" />
           <EntitySet Name="Inventory" EntityType="TreeToolModel.Inventory" />
+          <EntitySet Name="Performer" EntityType="TreeToolModel.Performer" />
           <EntitySet Name="SafetyType" EntityType="TreeToolModel.SafetyType" />
+          <EntitySet Name="sysdiagrams" EntityType="TreeToolModel.sysdiagrams" />
+          <EntitySet Name="Tree" EntityType="TreeToolModel.Tree" />
           <EntitySet Name="TreeObservation" EntityType="TreeToolModel.TreeObservation" />
           <EntitySet Name="TreeSpecies" EntityType="TreeToolModel.TreeSpecies" />
           <EntitySet Name="VitalityType" EntityType="TreeToolModel.VitalityType" />
@@ -355,12 +418,20 @@
             <End Role="FungusType" EntitySet="FungusType" />
             <End Role="TreeObservation" EntitySet="TreeObservation" />
           </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Performer" Association="TreeToolModel.FK_Inventory_Performer">
+            <End Role="Performer" EntitySet="Performer" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
           <AssociationSet Name="FK_TreeObservation_SafetyType" Association="TreeToolModel.FK_TreeObservation_SafetyType">
             <End Role="SafetyType" EntitySet="SafetyType" />
             <End Role="TreeObservation" EntitySet="TreeObservation" />
           </AssociationSet>
-          <AssociationSet Name="FK_TreeObservation_TreeSpecies" Association="TreeToolModel.FK_TreeObservation_TreeSpecies">
+          <AssociationSet Name="FK_Tree_TreeSpecies" Association="TreeToolModel.FK_Tree_TreeSpecies">
             <End Role="TreeSpecies" EntitySet="TreeSpecies" />
+            <End Role="Tree" EntitySet="Tree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeObservation_Tree" Association="TreeToolModel.FK_TreeObservation_Tree">
+            <End Role="Tree" EntitySet="Tree" />
             <End Role="TreeObservation" EntitySet="TreeObservation" />
           </AssociationSet>
           <AssociationSet Name="FK_TreeObservation_VitalityType" Association="TreeToolModel.FK_TreeObservation_VitalityType">
@@ -385,7 +456,7 @@
             <PropertyRef Name="ActionNeedsID" />
           </Key>
           <Property Type="Int32" Name="ActionNeedsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Value" Nullable="false" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsType" FromRole="ActionNeedsType" ToRole="TreeObservation" />
         </EntityType>
         <EntityType Name="DamageClassType">
@@ -430,8 +501,18 @@
           <Property Type="Int32" Name="InventoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="EstateID" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="PerformerID" Nullable="false" />
           <NavigationProperty Name="Estate" Relationship="TreeToolModel.FK_Inventory_Estate" FromRole="Inventory" ToRole="Estate" />
+          <NavigationProperty Name="Performer" Relationship="TreeToolModel.FK_Inventory_Performer" FromRole="Inventory" ToRole="Performer" />
           <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.TreesInventory" FromRole="Inventory" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="Performer">
+          <Key>
+            <PropertyRef Name="PerformerID" />
+          </Key>
+          <Property Type="Int32" Name="PerformerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inventory" Relationship="TreeToolModel.FK_Inventory_Performer" FromRole="Performer" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="SafetyType">
           <Key>
@@ -440,6 +521,25 @@
           <Property Type="Int32" Name="SafetyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="Value" Nullable="false" />
           <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_SafetyType" FromRole="SafetyType" ToRole="TreeObservation" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tree">
+          <Key>
+            <PropertyRef Name="TreeID" />
+          </Key>
+          <Property Type="Int32" Name="TreeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TreeSpeciesID" Nullable="false" />
+          <NavigationProperty Name="TreeSpecies" Relationship="TreeToolModel.FK_Tree_TreeSpecies" FromRole="Tree" ToRole="TreeSpecies" />
+          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_Tree" FromRole="Tree" ToRole="TreeObservation" />
         </EntityType>
         <EntityType Name="TreeObservation">
           <Key>
@@ -465,14 +565,14 @@
           <Property Type="Int32" Name="ActionNeedsTimeID" />
           <Property Type="Int32" Name="ActionNeedsID" />
           <Property Type="Int32" Name="FungusID" />
-          <Property Type="Int32" Name="TreeSpeciesID" />
+          <Property Type="Int32" Name="TreeID" Nullable="false" />
           <NavigationProperty Name="ActionNeedsTimeType" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsTimeType" FromRole="TreeObservation" ToRole="ActionNeedsTimeType" />
           <NavigationProperty Name="ActionNeedsType" Relationship="TreeToolModel.FK_TreeObservation_ActionNeedsType" FromRole="TreeObservation" ToRole="ActionNeedsType" />
           <NavigationProperty Name="DamageClassType" Relationship="TreeToolModel.FK_TreeObservation_DamageClassType" FromRole="TreeObservation" ToRole="DamageClassType" />
           <NavigationProperty Name="DiseasesType" Relationship="TreeToolModel.FK_TreeObservation_DiseasesType" FromRole="TreeObservation" ToRole="DiseasesType" />
           <NavigationProperty Name="FungusType" Relationship="TreeToolModel.FK_TreeObservation_FungusType" FromRole="TreeObservation" ToRole="FungusType" />
           <NavigationProperty Name="SafetyType" Relationship="TreeToolModel.FK_TreeObservation_SafetyType" FromRole="TreeObservation" ToRole="SafetyType" />
-          <NavigationProperty Name="TreeSpecies" Relationship="TreeToolModel.FK_TreeObservation_TreeSpecies" FromRole="TreeObservation" ToRole="TreeSpecies" />
+          <NavigationProperty Name="Tree" Relationship="TreeToolModel.FK_TreeObservation_Tree" FromRole="TreeObservation" ToRole="Tree" />
           <NavigationProperty Name="VitalityType" Relationship="TreeToolModel.FK_TreeObservation_VitalityType" FromRole="TreeObservation" ToRole="VitalityType" />
           <NavigationProperty Name="Inventory" Relationship="TreeToolModel.TreesInventory" FromRole="TreeObservation" ToRole="Inventory" />
         </EntityType>
@@ -486,7 +586,7 @@
           <Property Type="String" Name="Sort" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ePlant" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="SwedishName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TreeObservation" Relationship="TreeToolModel.FK_TreeObservation_TreeSpecies" FromRole="TreeSpecies" ToRole="TreeObservation" />
+          <NavigationProperty Name="Tree" Relationship="TreeToolModel.FK_Tree_TreeSpecies" FromRole="TreeSpecies" ToRole="Tree" />
         </EntityType>
         <EntityType Name="VitalityType">
           <Key>
@@ -568,6 +668,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Inventory_Performer">
+          <End Type="TreeToolModel.Performer" Role="Performer" Multiplicity="1" />
+          <End Type="TreeToolModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Performer">
+              <PropertyRef Name="PerformerID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="PerformerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TreeObservation_SafetyType">
           <End Type="TreeToolModel.SafetyType" Role="SafetyType" Multiplicity="0..1" />
           <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
@@ -580,15 +692,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TreeObservation_TreeSpecies">
-          <End Type="TreeToolModel.TreeSpecies" Role="TreeSpecies" Multiplicity="0..1" />
-          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+        <Association Name="FK_Tree_TreeSpecies">
+          <End Type="TreeToolModel.TreeSpecies" Role="TreeSpecies" Multiplicity="1" />
+          <End Type="TreeToolModel.Tree" Role="Tree" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TreeSpecies">
               <PropertyRef Name="TreeSpeciesID" />
             </Principal>
-            <Dependent Role="TreeObservation">
+            <Dependent Role="Tree">
               <PropertyRef Name="TreeSpeciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeObservation_Tree">
+          <End Type="TreeToolModel.Tree" Role="Tree" Multiplicity="1" />
+          <End Type="TreeToolModel.TreeObservation" Role="TreeObservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tree">
+              <PropertyRef Name="TreeID" />
+            </Principal>
+            <Dependent Role="TreeObservation">
+              <PropertyRef Name="TreeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -668,9 +792,18 @@
           <EntitySetMapping Name="Inventory">
             <EntityTypeMapping TypeName="TreeToolModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="PerformerID" ColumnName="PerformerID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="EstateID" ColumnName="EstateID" />
                 <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Performer">
+            <EntityTypeMapping TypeName="TreeToolModel.Performer">
+              <MappingFragment StoreEntitySet="Performer">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PerformerID" ColumnName="PerformerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -682,10 +815,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TreeToolModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tree">
+            <EntityTypeMapping TypeName="TreeToolModel.Tree">
+              <MappingFragment StoreEntitySet="Tree">
+                <ScalarProperty Name="TreeSpeciesID" ColumnName="TreeSpeciesID" />
+                <ScalarProperty Name="TreeID" ColumnName="TreeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TreeObservation">
             <EntityTypeMapping TypeName="TreeToolModel.TreeObservation">
               <MappingFragment StoreEntitySet="TreeObservation">
-                <ScalarProperty Name="TreeSpeciesID" ColumnName="TreeSpeciesID" />
+                <ScalarProperty Name="TreeID" ColumnName="TreeID" />
                 <ScalarProperty Name="FungusID" ColumnName="FungusID" />
                 <ScalarProperty Name="ActionNeedsID" ColumnName="ActionNeedsID" />
                 <ScalarProperty Name="ActionNeedsTimeID" ColumnName="ActionNeedsTimeID" />

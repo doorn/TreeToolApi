@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Models;
+using System.Runtime.Serialization;
 namespace Models
 {
-    class InventoryModel
+    [DataContract]
+    public class InventoryModel
     {
-        public DateTime Date { get; set; }
+        [DataMember(Name = "date")]
+        public string Date { get; set; }
+        [DataMember(Name = "estateName")]
         public int EstateName { get; set; }
+        [DataMember(Name = "performerID")]
         public int PerformerID { get; set; }
-        public IEnumerable<TreeObservation> TreeObservation { get; set; }
+        [DataMember(Name = "treeObservations")]
+        public IEnumerable<TreeObservationModel> TreeObservations { get; set; }
 
     }
 }

@@ -32,7 +32,10 @@ namespace DAL
         public DbSet<Estate> Estate { get; set; }
         public DbSet<FungusType> FungusType { get; set; }
         public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<Performer> Performer { get; set; }
         public DbSet<SafetyType> SafetyType { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<Tree> Tree { get; set; }
         public DbSet<TreeObservation> TreeObservation { get; set; }
         public DbSet<TreeSpecies> TreeSpecies { get; set; }
         public DbSet<VitalityType> VitalityType { get; set; }

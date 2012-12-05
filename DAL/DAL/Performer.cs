@@ -12,20 +12,16 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class TreeSpecies
+    public partial class Performer
     {
-        public TreeSpecies()
+        public Performer()
         {
-            this.Tree = new HashSet<Tree>();
+            this.Inventory = new HashSet<Inventory>();
         }
     
-        public int TreeSpeciesID { get; set; }
-        public string Genus { get; set; }
-        public string Species { get; set; }
-        public string Sort { get; set; }
-        public string ePlant { get; set; }
-        public string SwedishName { get; set; }
+        public int PerformerID { get; set; }
+        public string Name { get; set; }
     
-        public virtual ICollection<Tree> Tree { get; set; }
+        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }
