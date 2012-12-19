@@ -12,17 +12,12 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class TreeObservation
+    public partial class TreeInventory
     {
-        public TreeObservation()
-        {
-            this.Inventory = new HashSet<Inventory>();
-        }
-    
-        public int TreeObservationID { get; set; }
+        public int TreeInventoryID { get; set; }
         public Nullable<double> Perimeter { get; set; }
         public Nullable<double> Height { get; set; }
-        public string TreeObservationComment { get; set; }
+        public string TreeInventoryComment { get; set; }
         public string VitalityComment { get; set; }
         public string DamageClassComment { get; set; }
         public string FungusComment { get; set; }
@@ -40,15 +35,21 @@ namespace DAL
         public Nullable<int> ActionNeedsID { get; set; }
         public Nullable<int> FungusID { get; set; }
         public int TreeID { get; set; }
+        public int PerformerID { get; set; }
+        public System.DateTime Date { get; set; }
+        public int EstateID { get; set; }
+        public Nullable<int> AgeID { get; set; }
     
         public virtual ActionNeedsTimeType ActionNeedsTimeType { get; set; }
         public virtual ActionNeedsType ActionNeedsType { get; set; }
+        public virtual AgeType AgeType { get; set; }
         public virtual DamageClassType DamageClassType { get; set; }
         public virtual DiseasesType DiseasesType { get; set; }
+        public virtual Estate Estate { get; set; }
         public virtual FungusType FungusType { get; set; }
+        public virtual Performer Performer { get; set; }
         public virtual SafetyType SafetyType { get; set; }
         public virtual Tree Tree { get; set; }
         public virtual VitalityType VitalityType { get; set; }
-        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }

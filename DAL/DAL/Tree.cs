@@ -16,13 +16,14 @@ namespace DAL
     {
         public Tree()
         {
-            this.TreeObservation = new HashSet<TreeObservation>();
+            this.TreeInventory = new HashSet<TreeInventory>();
         }
     
         public int TreeID { get; set; }
         public int TreeSpeciesID { get; set; }
+        public bool Removed { get; set; }
     
         public virtual TreeSpecies TreeSpecies { get; set; }
-        public virtual ICollection<TreeObservation> TreeObservation { get; set; }
+        public virtual ICollection<TreeInventory> TreeInventory { get; set; }
     }
 }

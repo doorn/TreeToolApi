@@ -125,6 +125,7 @@
     <Compile Include="Controllers\EstatesController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ProtocolController.cs" />
+    <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -132,6 +133,7 @@
     <Compile Include="Services\EstateService.cs" />
     <Compile Include="Services\InventoryService.cs" />
     <Compile Include="Services\ProtocolService.cs" />
+    <Compile Include="Services\TreeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -190,6 +192,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\OrebrollTreeTool - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\OrebrollTreeTool - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\treetool - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\treetool - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\treetool - Web Deploy %282%29.pubxml" />

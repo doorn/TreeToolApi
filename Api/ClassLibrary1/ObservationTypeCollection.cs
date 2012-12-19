@@ -11,24 +11,28 @@ namespace Models
     public class ObservationTypeCollection
     {
         [DataMember(Name = "vitalityType")]
-        public IEnumerable<ObservationType> VitalityType { get; set; }
+        public IEnumerable<ObservationTypeModel> VitalityType { get; set; }
 
         [DataMember(Name = "fungusType")]
-        public IEnumerable<ObservationType> FungusType { get; set; }
+        public IEnumerable<ObservationTypeModel> FungusType { get; set; }
 
         [DataMember(Name = "diseasesType")]
-        public IEnumerable<ObservationType> DiseasesType { get; set; }
+        public IEnumerable<ObservationTypeModel> DiseasesType { get; set; }
 
         [DataMember(Name = "damageClassType")]
-        public IEnumerable<ObservationType> DamageClassType { get; set; }
+        public IEnumerable<ObservationTypeModel> DamageClassType { get; set; }
 
         [DataMember(Name = "safetyType")]
-        public IEnumerable<ObservationType> SafetyType { get; set; }
+        public IEnumerable<ObservationTypeModel> SafetyType { get; set; }
 
-        //[DataMember(Name = "actionNeedsTimeType")]
-        //public IEnumerable<ObservationType> ActionNeedsTimeType { get; set; }
+        [DataMember(Name = "actionNeedsTimeType")]
+        public IEnumerable<ObservationTypeModel> ActionNeedsTimeType { get; set; }
 
-        //[DataMember(Name = "actionNeedsType")]
-        //public IEnumerable<ObservationType> ActionNeedsType { get; set; }
+        [DataMember(Name = "actionNeedsType")]
+        public IEnumerable<ActionNeedsTypeModel> ActionNeedsType { get; set; }
+
+        [DataMember(Name = "ageType")]
+        public IEnumerable<AgeTypeModel> AgeType { get; set; }
+
     }
 }

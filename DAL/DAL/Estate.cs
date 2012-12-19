@@ -16,7 +16,7 @@ namespace DAL
     {
         public Estate()
         {
-            this.Inventory = new HashSet<Inventory>();
+            this.TreeInventory = new HashSet<TreeInventory>();
         }
     
         public string Title { get; set; }
@@ -25,6 +25,6 @@ namespace DAL
         public double CoordiX { get; set; }
         public int EstateID { get; set; }
     
-        public virtual ICollection<Inventory> Inventory { get; set; }
+        public virtual ICollection<TreeInventory> TreeInventory { get; set; }
     }
 }

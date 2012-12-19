@@ -16,12 +16,12 @@ namespace DAL
     {
         public Performer()
         {
-            this.Inventory = new HashSet<Inventory>();
+            this.TreeInventory = new HashSet<TreeInventory>();
         }
     
         public int PerformerID { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<Inventory> Inventory { get; set; }
+        public virtual ICollection<TreeInventory> TreeInventory { get; set; }
     }
 }

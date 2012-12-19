@@ -52,6 +52,9 @@
     <Compile Include="ActionNeedsType.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="AgeType.cs">
+      <DependentUpon>TreeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="DamageClassType.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
@@ -66,9 +69,6 @@
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="IDBManager.cs" />
-    <Compile Include="Inventory.cs">
-      <DependentUpon>TreeContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Performer.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
@@ -76,7 +76,7 @@
     <Compile Include="SafetyType.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Tree.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TreeContext.Context.cs">
@@ -94,7 +94,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TreeContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="TreeObservation.cs">
+    <Compile Include="TreeInventory.cs">
       <DependentUpon>TreeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TreeSpecies.cs">

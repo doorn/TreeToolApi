@@ -20,14 +20,21 @@ namespace Api.Controllers
         }
 
         // GET api/values/5
-        public InventoryModel Get(int id)
+        public IEnumerable<TreeInventoryModel> Get(int id)
         {
-            InventoryService service = new InventoryService();
-            return service.GetInventoryByEstateName(id);
+            try
+            {
+                InventoryService service = new InventoryService();
+                return service.GetTreeInventoryByEstateName(id);
+            }
+            catch (Exception ex) { 
+                 var response = ControllerContext.Request.CreateResponse(HttpStatusCode.NotFound);
+                 throw new HttpResponseException(response);
+            }
         }
 
         // POST api/values
-        public HttpStatusCode Post([FromBody]InventoryModel inventory)
+        public HttpStatusCode Post([FromBody]TreeInventoryModel inventory)
         {
             InventoryService service = new InventoryService();
             return service.SaveInventory(inventory);

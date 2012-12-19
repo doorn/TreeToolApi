@@ -14,10 +14,9 @@ namespace Models
         public string Date { get; set; }
         [DataMember(Name = "estateName")]
         public int EstateName { get; set; }
-        [DataMember(Name = "performerID")]
-        public int PerformerID { get; set; }
+        
         [DataMember(Name = "treeObservations")]
-        public IEnumerable<TreeObservationModel> TreeObservations { get; set; }
+        public IEnumerable<TreeInventoryModel> TreeObservations { get; set; }
 
     }
 }

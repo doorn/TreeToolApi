@@ -9,12 +9,12 @@ namespace Api.Services
 {
     public class InventoryService
     {
-        public InventoryModel GetInventoryByEstateName(int name)
+        internal IEnumerable<TreeInventoryModel> GetTreeInventoryByEstateName(int name)
         {
             IDBManager manager = new DBManager();
-            return manager.GetInventoryByEstateName(name);
+            return manager.GetTreeInventoryByEstateName(name);
         }
-        public HttpStatusCode SaveInventory(InventoryModel inventory)
+        public HttpStatusCode SaveInventory(TreeInventoryModel inventory)
         {
             IDBManager manager = new DBManager();
             return manager.SaveInventory(inventory);

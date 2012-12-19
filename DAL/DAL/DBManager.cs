@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using System.Net;
+using System.Web;
 //using System.Data;
 
 namespace DAL
@@ -20,12 +21,12 @@ namespace DAL
              return GetEstatesFromDB();
          }
 
-         public InventoryModel GetInventoryByEstateName(int name)
+         public IEnumerable<TreeInventoryModel> GetTreeInventoryByEstateName(int name)
          {
-             return GetInventoryByEstateNameFromMock(name);
+             return GetInventoryMockData(name);
          }
 
-         public HttpStatusCode SaveInventory(InventoryModel inventory)
+         public HttpStatusCode SaveInventory(TreeInventoryModel inventory)
          {
              try
              {
@@ -36,26 +37,26 @@ namespace DAL
                  return HttpStatusCode.BadRequest;
              }
          }
-         InventoryModel GetInventoryByEstateNameFromMock(int name) {
-             return GetInventoryMockData();
-         }
+         //InventoryModel GetInventoryByEstateNameFromMock(int name) {
+         //    return GetInventoryMockData(name);
+         //}
 
-         
-
-
-         void SaveInventoryToDB(InventoryModel inventory)
+         void SaveInventoryToDB(TreeInventoryModel inventory)
          {
-             TreeToolEntities ent = new TreeToolEntities();
+             TreeToolOrebrollEntities ent = new TreeToolOrebrollEntities();
              
 
 
-             Estate estateEntity =  ent.Estate.Where(e => e.Name.Equals(inventory.EstateName)).Single();
-             Performer performerEntity = ent.Performer.Where(p=>p.PerformerID.Equals(inventory.PerformerID)).Single();
-             Inventory inventoryEntity = new Inventory();
-             inventoryEntity.Date = DateTime.Now;
-             inventoryEntity.Estate = estateEntity;
-             inventoryEntity.Performer = performerEntity;
-             //ent.TreeObservation.add
+             //Estate estateEntity =  ent.Estate.Where(e => e.Name.Equals(inventory.EstateName)).Single();
+             //Performer performerEntity = ent.Performer.Where(p=>p.PerformerID.Equals(inventory.PerformerID)).Single();
+             //Inventory inventoryEntity = new Inventory();
+             //inventoryEntity.Date = DateTime.Now;
+             //inventoryEntity.Estate = estateEntity;
+             //inventoryEntity.Performer = performerEntity;
+             //ent.Inventory.Add(inventoryEntity);
+             
+             //ent.SaveChanges();
+             
 
              
 
@@ -80,50 +81,111 @@ namespace DAL
              //return 
          }
          
-         InventoryModel GetInventoryMockData() {
-             InventoryModel inventory = new InventoryModel
-             {
-                 Date = DateTime.Now.ToShortDateString(),
-                 EstateName = 71101,
-                 PerformerID = 1
-             };
-             List<TreeObservationModel> observations = new List<TreeObservationModel>();
-             TreeObservationModel observ1 = new TreeObservationModel();
-             observ1.DamageClassComment = "Brandskadad";
-             observ1.DamageClassID = 2;
-             observ1.DiseasesComment = "SARS";
-             observ1.DiseasesID = 4;
-             observ1.FungusComment = "Ännu mer svamp";
-             observ1.FungusID = 4;
-             observ1.Height = 8.9;
-             observ1.Perimeter = 140;
-             observ1.SafetyComment = "Livsfarligt träd";
-             observ1.SafetyID = 4;
-             observ1.TreeObservationComment = "30 år gammalt";
-             observ1.TreeSpeciesID = 16;
-             observ1.VitalityComment = "Lite halv dåligt kondition";
-             observ1.VitalityID = 3;
+         IEnumerable<TreeInventoryModel> GetInventoryMockData(int name) {
+             List<TreeInventoryModel> inventories;
+             try{
+                 if (name != 71101) {
+                     throw new KeyNotFoundException();
+                 }
+             
+                 inventories = new List<TreeInventoryModel>();
+                 TreeInventoryModel observ1 = new TreeInventoryModel();
+                 observ1.DamageClassComment = "Brandskadad";
+                 observ1.DamageClassID = 2;
+                 observ1.DiseasesComment = "SARS";
+                 observ1.DiseasesID = 4;
+                 observ1.FungusComment = "Ännu mer svamp";
+                 observ1.FungusID = 4;
+                 observ1.Height = 8.9;
+                 observ1.Perimeter = 140;
+                 observ1.SafetyComment = "Livsfarligt träd";
+                 observ1.SafetyID = 4;
+                 observ1.TreeObservationComment = "30 år gammalt";
+                 observ1.TreeSpeciesID = 16;
+                 observ1.VitalityComment = "Lite halv dåligt kondition";
+                 observ1.VitalityID = 3;
+                 observ1.TreeID = 1;
+                 observ1.TreeSpecies = "koreagran";
+                 observ1.AgeID = 2;
 
-             observ1.CoordX = 15.1425;
-             observ1.CoordY = 59.2100021;
+                 observ1.CoordX = 15.1425;
+                 observ1.CoordY = 59.2100021;
 
-             TreeObservationModel observ2 = observ1;
-             observ2.CoordX = 15.1699;
-             observ2.CoordY = 59.2401;
-             TreeObservationModel observ3 = observ1;
-             observ3.CoordX = 15.1011;
-             observ3.CoordY = 59.1000;
-             TreeObservationModel observ4 = observ1;
-             observ3.CoordX = 15.3015;
-             observ3.CoordY = 59.29001;
+                 TreeInventoryModel observ2 = new TreeInventoryModel();
+                 observ2.DamageClassComment = "Brandskadad";
+                 observ2.DamageClassID = 2;
+                 observ2.DiseasesComment = "SARS";
+                 observ2.DiseasesID = 4;
+                 observ2.FungusComment = "Ännu mer svamp";
+                 observ2.FungusID = 4;
+                 observ2.Height = 8.9;
+                 observ2.Perimeter = 140;
+                 observ2.SafetyComment = "Livsfarligt träd";
+                 observ2.SafetyID = 4;
+                 observ2.TreeObservationComment = "30 år gammalt";
+                 observ2.TreeSpeciesID = 16;
+                 observ2.VitalityComment = "Lite halv dåligt kondition";
+                 observ2.VitalityID = 3;
+                 observ2.TreeID = 2;
+                 observ2.TreeSpecies = "Björk";
+                 observ2.AgeID = 1;
 
-             observations.Add(observ1);
-             observations.Add(observ2);
-             observations.Add(observ3);
-             observations.Add(observ4);
+                 observ2.CoordX = 15.1445;
+                 observ2.CoordY = 59.2300021;
+                 TreeInventoryModel observ3 = new TreeInventoryModel();
+                 observ3.DamageClassComment = "Brandskadad";
+                 observ3.DamageClassID = 2;
+                 observ3.DiseasesComment = "SARS";
+                 observ3.DiseasesID = 4;
+                 observ3.FungusComment = "Ännu mer svamp";
+                 observ3.FungusID = 4;
+                 observ3.Height = 8.9;
+                 observ3.Perimeter = 140;
+                 observ3.SafetyComment = "Livsfarligt träd";
+                 observ3.SafetyID = 4;
+                 observ3.TreeObservationComment = "30 år gammalt";
+                 observ3.TreeSpeciesID = 16;
+                 observ3.VitalityComment = "Lite halv dåligt kondition";
+                 observ3.VitalityID = 3;
+                 observ3.TreeID = 3;
+                 observ3.TreeSpecies = "Ek";
 
-             inventory.TreeObservations = observations;
-             return inventory;
+                 observ3.CoordX = 15.1465;
+                 observ3.CoordY = 59.2400021;
+                 observ3.AgeID = 3;
+                 
+                 TreeInventoryModel observ4 = new TreeInventoryModel();
+                 observ4.DamageClassComment = "Brandskadad";
+                 observ4.DamageClassID = 2;
+                 observ4.DiseasesComment = "SARS";
+                 observ4.DiseasesID = 4;
+                 observ4.FungusComment = "Ännu mer svamp";
+                 observ4.FungusID = 4;
+                 observ4.Height = 8.9;
+                 observ4.Perimeter = 140;
+                 observ4.SafetyComment = "Livsfarligt träd";
+                 observ4.SafetyID = 4;
+                 observ4.TreeObservationComment = "30 år gammalt";
+                 observ4.TreeSpeciesID = 16;
+                 observ4.VitalityComment = "Lite halv dåligt kondition";
+                 observ4.VitalityID = 3;
+                 observ4.TreeID = 4;
+                 observ4.TreeSpecies = "Tall";
+                 observ4.AgeID = 4;
+
+                 observ4.CoordX = 15.1485;
+                 observ4.CoordY = 59.2600021;
+
+                 inventories.Add(observ1);
+                 inventories.Add(observ2);
+                 inventories.Add(observ3);
+                 inventories.Add(observ4);
+                 
+             }
+             catch(Exception ex){
+                throw new KeyNotFoundException();
+             }
+             return inventories;
          }
 
         /// <summary>
@@ -131,22 +193,22 @@ namespace DAL
         /// </summary>
         /// <returns>Protocol Model</returns>
          ProtocolModel GetProtocolFromDB() {
-             
-             TreeToolEntities ent = new TreeToolEntities();
-             
 
+             TreeToolOrebrollEntities ent = new TreeToolOrebrollEntities();
+             
              var protocol = new ProtocolModel();
              var observationTypes = new ObservationTypeCollection();
              
-             
              protocol.TreeSpecies = (ent.TreeSpecies.Select(t=> new TreeSpeciesModel{ ID = t.TreeSpeciesID, Name = t.SwedishName}));
-             //protocol.ActionNeedsTimeType = (ent.ActionNeedsTimeType.Select(t=> new ObservationType{ ID = t.ActionNeedsTimeID, Value= t.Value}));
-             //protocol.ActionNeedsType = (ent.ActionNeedsType.Select(t=> new ObservationType{ ID = t.ActionNeedsID, Value= t.Value}));
-             observationTypes.DamageClassType = (ent.DamageClassType.Select(t => new ObservationType { ID = t.DamageClassID, Value = t.Value }));
-             observationTypes.DiseasesType = (ent.DiseasesType.Select(t => new ObservationType { ID = t.DiseasesID, Value = t.Value }));
-             observationTypes.FungusType = (ent.FungusType.Select(t => new ObservationType { ID = t.FungusID, Value = t.Value }));
-             observationTypes.SafetyType = (ent.SafetyType.Select(t => new ObservationType { ID = t.SafetyID, Value = t.Value }));
-             observationTypes.VitalityType = (ent.VitalityType.Select(t => new ObservationType { ID = t.VitalityID, Value = t.Value }));
+             observationTypes.ActionNeedsTimeType = (ent.ActionNeedsTimeType.Select(t => new ObservationTypeModel { ID = t.ActionNeedsTimeID, Value = t.Value }));
+             observationTypes.ActionNeedsType = (ent.ActionNeedsType.Select(t => new ActionNeedsTypeModel { ID = t.ActionNeedsID, Value = t.Value}));
+             observationTypes.DamageClassType = (ent.DamageClassType.Select(t => new ObservationTypeModel { ID = t.DamageClassID, Value = t.Value }));
+             observationTypes.DiseasesType = (ent.DiseasesType.Select(t => new ObservationTypeModel { ID = t.DiseasesID, Value = t.Value }));
+             observationTypes.FungusType = (ent.FungusType.Select(t => new ObservationTypeModel { ID = t.FungusID, Value = t.Value }));
+             observationTypes.SafetyType = (ent.SafetyType.Select(t => new ObservationTypeModel { ID = t.SafetyID, Value = t.Value }));
+             observationTypes.VitalityType = (ent.VitalityType.Select(t => new ObservationTypeModel { ID = t.VitalityID, Value = t.Value }));
+             observationTypes.AgeType = (ent.AgeType.Select(t => new AgeTypeModel { ID = t.AgeID, Value = t.Value }));
+             
              protocol.ObservationTypes = observationTypes;
              return protocol;
          }
@@ -157,7 +219,7 @@ namespace DAL
         /// </summary>
         /// <returns>Returns multiple estate models.</returns>
          IEnumerable<EstateModel> GetEstatesFromDB() {
-             TreeToolEntities ent = new TreeToolEntities();
+             TreeToolOrebrollEntities ent = new TreeToolOrebrollEntities();
              var estates = (from e in ent.Estate
                             select new EstateModel
                             {

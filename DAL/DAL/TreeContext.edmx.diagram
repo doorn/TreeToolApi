@@ -4,33 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd4b642e90be407a9ce363643af26466" Name="Diagram1" ZoomLevel="34">
-        <EntityTypeShape EntityType="TreeToolModel.ActionNeedsTimeType" Width="1.5" PointX="22.375" PointY="3.625" />
-        <EntityTypeShape EntityType="TreeToolModel.ActionNeedsType" Width="1.5" PointX="6.625" PointY="7.875" />
-        <EntityTypeShape EntityType="TreeToolModel.DamageClassType" Width="1.5" PointX="2.1383783640984344" PointY="1.6959998317509888" />
-        <EntityTypeShape EntityType="TreeToolModel.DiseasesType" Width="1.5" PointX="22.375" PointY="1.5" />
-        <EntityTypeShape EntityType="TreeToolModel.Estate" Width="1.5" PointX="3.25" PointY="17.5" />
-        <EntityTypeShape EntityType="TreeToolModel.FungusType" Width="1.5" PointX="3.75" PointY="3.75" />
-        <EntityTypeShape EntityType="TreeToolModel.Inventory" Width="1.5" PointX="9.625" PointY="12.25" />
-        <EntityTypeShape EntityType="TreeToolModel.Performer" Width="1.5" PointX="27.125" PointY="9" />
-        <EntityTypeShape EntityType="TreeToolModel.SafetyType" Width="1.5" PointX="22.375" PointY="8.25" />
-        <EntityTypeShape EntityType="TreeToolModel.sysdiagrams" Width="1.5" PointX="22.5" PointY="17.125" />
-        <EntityTypeShape EntityType="TreeToolModel.Tree" Width="1.5" PointX="20.75" PointY="11.25" />
-        <EntityTypeShape EntityType="TreeToolModel.TreeObservation" Width="1.5" PointX="13.875" PointY="3.125" />
-        <EntityTypeShape EntityType="TreeToolModel.TreeSpecies" Width="1.5" PointX="16.375" PointY="17" />
-        <EntityTypeShape EntityType="TreeToolModel.VitalityType" Width="1.5" PointX="22.375" PointY="6" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_ActionNeedsTimeType" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_ActionNeedsType" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_DamageClassType" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_DiseasesType" />
-        <AssociationConnector Association="TreeToolModel.FK_Inventory_Estate" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_FungusType" />
-        <AssociationConnector Association="TreeToolModel.FK_Inventory_Performer" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_SafetyType" />
-        <AssociationConnector Association="TreeToolModel.FK_Tree_TreeSpecies" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_Tree" />
-        <AssociationConnector Association="TreeToolModel.FK_TreeObservation_VitalityType" />
-        <AssociationConnector Association="TreeToolModel.TreesInventory" />
+      <Diagram DiagramId="e8fb548db37f4435a64a5d5c4cce972d" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.ActionNeedsTimeType" Width="1.5" PointX="22.75" PointY="30.625" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.ActionNeedsType" Width="1.5" PointX="3.625" PointY="14" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.AgeType" Width="1.5" PointX="6.125" PointY="15.5" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.DamageClassType" Width="1.5" PointX="9.125" PointY="17" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.DiseasesType" Width="1.5" PointX="16" PointY="35.25" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.Estate" Width="1.5" PointX="19.875" PointY="23.25" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.FungusType" Width="1.5" PointX="19.875" PointY="34.125" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.Performer" Width="1.5" PointX="19.875" PointY="31.875" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.SafetyType" Width="1.5" PointX="3.625" PointY="24.5" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.Tree" Width="1.5" PointX="15.625" PointY="27.875" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.TreeInventory" Width="1.5" PointX="9.125" PointY="27.5" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.TreeSpecies" Width="1.5" PointX="20" PointY="25.875" />
+        <EntityTypeShape EntityType="TreeToolOrebrollModel.VitalityType" Width="1.5" PointX="20" PointY="29.25" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_ActionNeedsTimeType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_ActionNeedsType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeInventory_AgeType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_DamageClassType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_DiseasesType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_Estate" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_FungusType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_Performer" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_SafetyType" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_Tree_TreeSpecies" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_Tree" />
+        <AssociationConnector Association="TreeToolOrebrollModel.FK_TreeObservation_VitalityType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

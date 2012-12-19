@@ -12,12 +12,16 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class AgeType
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public AgeType()
+        {
+            this.TreeInventory = new HashSet<TreeInventory>();
+        }
+    
+        public int AgeID { get; set; }
+        public string Value { get; set; }
+    
+        public virtual ICollection<TreeInventory> TreeInventory { get; set; }
     }
 }

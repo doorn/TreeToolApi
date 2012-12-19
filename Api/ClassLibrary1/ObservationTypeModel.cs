@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Models
 {
     [DataContract]
-    public class ObservationType
+    public class ObservationTypeModel
     {
         [DataMember (Name="id")]
         public int ID { get; set; }

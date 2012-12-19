@@ -16,12 +16,12 @@ namespace DAL
     {
         public DiseasesType()
         {
-            this.TreeObservation = new HashSet<TreeObservation>();
+            this.TreeInventory = new HashSet<TreeInventory>();
         }
     
         public int DiseasesID { get; set; }
         public int Value { get; set; }
     
-        public virtual ICollection<TreeObservation> TreeObservation { get; set; }
+        public virtual ICollection<TreeInventory> TreeInventory { get; set; }
     }
 }

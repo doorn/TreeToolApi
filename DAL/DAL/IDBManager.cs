@@ -12,7 +12,7 @@ namespace DAL
     {
         IEnumerable<EstateModel> GetEstates();
         ProtocolModel GetProtocol();
-        InventoryModel GetInventoryByEstateName(int name);
-        HttpStatusCode SaveInventory(InventoryModel inventory);
+        IEnumerable<TreeInventoryModel> GetTreeInventoryByEstateName(int name);
+        HttpStatusCode SaveInventory(TreeInventoryModel inventory);
     }
 }
